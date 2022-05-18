@@ -1,0 +1,226 @@
+{% extends "base.html" %}
+{% block title %}ERUDITE | Projet{% endblock %}
+
+{% block content %}
+<form method="POST" action="#" class="antialiased sans-serif bg-white" id="form-project">
+	<div x-data="app()" x-cloak>
+		<div class="max-w-6xl mx-auto px-4 py-10">
+
+			<div x-show.transition="step != 'complete'">	
+				<!-- Top Navigation -->
+				<div class="border-b-2 py-4">
+					<div class="uppercase tracking-wide text-xs font-bold text-gray-500 mb-1 leading-tight" x-text="`Étape: ${step} sur 4`"></div>
+					<div class="flex flex-col md:flex-row md:items-center md:justify-between">
+						<div class="flex-1">
+							<div x-show="step === 1">
+								<div class="text-lg font-bold text-gray-900 leading-tight">VOS BESOINS / Le Profil Usager</div>
+							</div>
+							
+							<div x-show="step === 2">
+								<div class="text-lg font-bold text-gray-900 leading-tight">VOS BESOINS / Le Type d'Espace 1/2</div>
+							</div>
+
+							<div x-show="step === 3">
+								<div class="text-lg font-bold text-gray-900 leading-tight">VOS BESOINS / Le Type d'Espace 2/2</div>
+							</div>
+
+                            <div x-show="step === 4">
+                                <div class="text-lg font-bold text-gray-900 leading-tight">VOS BESOINS / Vos préférences</div>
+                            </div>
+						</div>
+
+						<div class="flex items-center md:w-64">
+							<div class="w-full bg-white rounded-full mr-2">
+								<div class="rounded-full bg-green-700 text-xs leading-none h-2 text-center text-white" :style="'width: '+ parseInt(step / 4 * 100) +'%'"></div>
+							</div>
+							<div class="text-xs w-10 text-gray-600" x-text="parseInt(step / 4 * 100) +'%'"></div>
+						</div>
+					</div>
+				</div>
+				<!-- /Top Navigation -->
+
+				<!-- Step Content -->
+				<div class="py-10">	
+					<div x-show.transition.in="step === 1">
+                        <p class="font-bold text-lg mb-8">Qui sont les usagers ? 🤔</p>
+
+                        <div class="grid grid-cols-4 gap-4 place-items-center">
+                            <div></div>
+                            <div class="font-bold">Oui</div>
+                            <div class="font-bold">Non</div>
+                            <div></div>
+                            <p class="justify-self-start">Bébé</p>
+                            <input type="checkbox" name="checkbox-bebe-oui" id="checkbox-bebe-oui">
+                            <input type="checkbox" name="checkbox-bebe-non" id="checkbox-bebe-non">
+                            <input type="number" name="nombre-bebe" id="nombre-bebe" placeholder="Nombre" class="border-2 rounded-lg focus:ring-0 focus:outline-none invalid:border-red-700 valid:border-green-700 active:border-green-700">
+                            <p class="justify-self-start">Enfant</p>
+                            <input type="checkbox" name="checkbox-enfant-oui" id="checkbox-enfant-oui">
+                            <input type="checkbox" name="checkbox-enfant-non" id="checkbox-enfant-non">  
+                            <input type="number" name="nombre-enfant" id="nombre-enfant" placeholder="Nombre" class="border-2 rounded-lg focus:ring-0 focus:outline-none invalid:border-red-700 valid:border-green-700 active:border-green-700">
+                            <p class="justify-self-start">Jeune adulte</p>
+                            <input type="checkbox" name="checkbox-ja-oui" id="checkbox-ja-oui">
+                            <input type="checkbox" name="checkbox-ja-non" id="checkbox-ja-non">
+                            <input type="number" name="nombre-ja" id="nombre-ja" placeholder="Nombre" class="border-2 rounded-lg focus:ring-0 focus:outline-none invalid:border-red-700 valid:border-green-700 active:border-green-700">
+                            <p class="justify-self-start">Adulte</p>
+                            <input type="checkbox" name="checkbox-adulte-oui" id="checkbox-adulte-oui">
+                            <input type="checkbox" name="checkbox-adulte-non" id="checkbox-adulte-non">
+                            <input type="number" name="nombre-adulte" id="nombre-adulte" placeholder="Nombre" class="border-2 rounded-lg focus:ring-0 focus:outline-none invalid:border-red-700 valid:border-green-700 active:border-green-700">
+                            <p class="justify-self-start">Personne âgée</p>
+                            <input type="checkbox" name="checkbox-pa-oui" id="checkbox-pa-oui">
+                            <input type="checkbox" name="checkbox-pa-non" id="checkbox-pa-non">
+                            <input type="number" name="nombre-pa" id="nombre-pa" placeholder="Nombre" class="border-2 rounded-lg focus:ring-0 focus:outline-none invalid:border-red-700 valid:border-green-700 active:border-green-700">
+                            <p class="justify-self-start">Personne à mobilité réduite</p>
+                            <input type="checkbox" name="checkbox-pmr-oui" id="checkbox-pmr-oui">
+                            <input type="checkbox" name="checkbox-pmr-non" id="checkbox-pmr-non">
+                            <input type="number" name="nombre-pmr" id="nombre-pmr" placeholder="Nombre" class="border-2 rounded-lg focus:ring-0 focus:outline-none invalid:border-red-700 valid:border-green-700 active:border-green-700">
+                        </div>
+					</div>
+					<div x-show.transition.in="step === 2">
+
+                        <p class="font-bold text-lg mb-12">Quels sont les différents types d'espaces que vous désirez ? 🤗</p>
+
+                        <div class="grid grid-cols-2 gap-x-8 place-items-start w-full">
+                            <div class="grid grid-cols-3 gap-8 justify-items-center place-items-center w-full">
+                                <div></div>
+                                <div>Oui</div>
+                                <div>Non</div>
+                                <p class="justify-self-start">Entrée</p>
+                                <input type="checkbox" name="checkbox-entree-oui" id="checkbox-entree-oui">
+                                <input type="checkbox" name="checkbox-entree-non" id="checkbox-entree-non">
+                                <p class="justify-self-start">Salon séjour</p>
+                                <input type="checkbox" name="checkbox-salon-sejour-oui" id="checkbox-salon-sejour-oui">
+                                <input type="checkbox" name="checkbox-salon-sejour-non" id="checkbox-salon-sejour-non">
+                                <p class="justify-self-start">Salle à manger</p>
+                                <input type="checkbox" name="checkbox-sm-oui" id="checkbox-sm-oui">
+                                <input type="checkbox" name="checkbox-sm-non" id="checkbox-sm-non">
+                                <p class="justify-self-start">Cuisine</p>
+                                <input type="checkbox" name="checkbox-cuisine-oui" id="checkbox-cuisine-oui">
+                                <input type="checkbox" name="checkbox-cuisine-non" id="checkbox-cuisine-non">
+                                <p class="justify-self-start">Chambre(s)</p>
+                                <input type="number" name="nb-min" id="nb-min" class="w-3/4 border-2 rounded-lg focus:ring-0 focus:outline-none invalid:border-red-700 valid:border-green-700 active:border-green-700" placeholder="Qté min">
+                                <input type="number" name="nb-max" id="nb-max" class="w-3/4 border-2 rounded-lg focus:ring-0 focus:outline-none invalid:border-red-700 valid:border-green-700 active:border-green-700" placeholder="Qté max">
+                                <p class="justify-self-start">Buanderie</p>
+                                <input type="checkbox" name="checkbox-buanderie-oui" id="checkbox-buanderie-oui">
+                                <input type="checkbox" name="checkbox-buanderie-non" id="checkbox-buanderie-non">
+                            </div>
+
+                            <div class="grid grid-cols-4 gap-4 justify-items-center place-items-center w-full">
+                                <div></div>
+                                <div>Oui</div>
+                                <div>Non</div>
+                                <div></div>
+                                <p class="justify-self-start">Pièce(s) d'eau</p>
+                                <input type="checkbox" name="checkbox-pe-oui" id="checkbox-pe-oui">
+                                <input type="checkbox" name="checkbox-pe-non" id="checkbox-pe-non">
+                                <input type="number" name="nb-min" id="nb-min" class="w-3/4 border-2 rounded-lg focus:ring-0 focus:outline-none invalid:border-red-700 valid:border-green-700 active:border-green-700" placeholder="Nombre">
+                                <p class="justify-self-start">Espace extérieur</p>
+                                <input type="checkbox" name="checkbox-ee-oui" id="checkbox-ee-oui">
+                                <input type="checkbox" name="checkbox-ee-non" id="checkbox-ee-non">
+                                <input type="text" name="nb-min" id="nb-min" class="w-3/4 border-2 rounded-lg focus:ring-0 focus:outline-none invalid:border-red-700 valid:border-green-700 active:border-green-700" placeholder="Ordre de grandeur">
+                                <p class="justify-self-start">Cellier</p>
+                                <input type="checkbox" name="checkbox-cellier-oui" id="checkbox-cellier-oui">
+                                <input type="checkbox" name="checkbox-cellier-non" id="checkbox-cellier-non">
+                                <div></div>
+                                <p class="justify-self-start">Grenier</p>
+                                <input type="checkbox" name="checkbox-grenier-oui" id="checkbox-grenier-oui">
+                                <input type="checkbox" name="checkbox-grenier-non" id="checkbox-grenier-non">
+                                <div></div>
+                                <p class="justify-self-start">Espace de travail</p>
+                                <input type="checkbox" name="checkbox-et-oui" id="checkbox-et-oui">
+                                <input type="checkbox" name="checkbox-et-non" id="checkbox-et-non">
+                                <div></div>
+                                <p class="justify-self-start">Espace sport</p>
+                                <input type="checkbox" name="checkbox-es-oui" id="checkbox-es-oui">
+                                <input type="checkbox" name="checkbox-es-non" id="checkbox-es-non">
+                                <div></div>
+                                <p class="justify-self-start">Garage</p>
+                                <input type="checkbox" name="checkbox-garage-oui" id="checkbox-garage-oui">
+                                <input type="checkbox" name="checkbox-garage-non" id="checkbox-garage-non">
+                                <input type="text" name="nb-min" id="nb-min" class="w-3/4 border-2 rounded-lg focus:ring-0 focus:outline-none invalid:border-red-700 valid:border-green-700 active:border-green-700" placeholder="Ordre de grandeur">
+                                <p class="justify-self-start">Dépendance</p>
+                                <input type="checkbox" name="checkbox-dependance-oui" id="checkbox-dependance-oui">
+                                <input type="checkbox" name="checkbox-dependance-non" id="checkbox-dependance-non">
+                                <div></div>
+                                <p class="justify-self-start">Autre...</p>
+                                <input type="text" name="more" id="more" class="justify-self-start border-2 rounded-lg focus:ring-0 focus:outline-none invalid:border-red-700 valid:border-green-700 active:border-green-700" placeholder="Quoi ?">
+                            </div>
+                        </div>
+					</div>
+
+					<div x-show.transition.in="step === 3" class="flex justify-center w-full">
+                        <div class="grid grid-cols-2 gap-y-4 justify-items-center max-w-2xl place-items-center">
+                            <p class="justify-self-start">Quel est votre budget ?</p>
+                            <input type="number" name="budget" id="budget" class="border-2 rounded-lg focus:ring-0 focus:outline-none invalid:border-red-700 valid:border-green-700 active:border-green-700" placeholder="Budget en euro (€)">
+                            <p class="justify-self-start">Quel est l'ordre de grandeur de la surface au sol du bâtiment ?</p>
+                            <input type="number" name="surf-sol" id="surf-sol" class="border-2 rounded-lg focus:ring-0 focus:outline-none invalid:border-red-700 valid:border-green-700 active:border-green-700" placeholder="Surface au sol (en m²)">
+                        </div>
+					</div>
+
+                    <div x-show.transition.in="step === 4">
+                        <p class="mb-12">Classez les différents points suivants par ordre d'importance pour vous (1 étant le meilleur classement et le plus important pour vous, et 5 le pire et moins important pour vous).</p>
+                        <div class="flex align-middle">
+                            <img src="/static/img/pref.png" alt="">
+                            <div id="classement">
+                                <input type="number" name="class-archi" id="class-archi" class="w-3/4 border-2 rounded-lg focus:ring-0 focus:outline-none invalid:border-red-700 valid:border-green-700 active:border-green-700 mt-14 mb-8" placeholder="Classement">
+                                <input type="number" name="class-env" id="class-env" class="w-3/4 border-2 rounded-lg focus:ring-0 focus:outline-none invalid:border-red-700 valid:border-green-700 active:border-green-700" placeholder="Classement">
+                                <input type="number" name="class-ener" id="class-ener" class="w-3/4 border-2 rounded-lg focus:ring-0 focus:outline-none invalid:border-red-700 valid:border-green-700 active:border-green-700 mt-6 mb-10" placeholder="Classement">
+                                <input type="number" name="class-ali" id="class-ali" class="w-3/4 border-2 rounded-lg focus:ring-0 focus:outline-none invalid:border-red-700 valid:border-green-700 active:border-green-700" placeholder="Classement">
+                                <input type="number" name="class-spe" id="class-spe" class="w-3/4 border-2 rounded-lg focus:ring-0 focus:outline-none invalid:border-red-700 valid:border-green-700 active:border-green-700 mt-7" placeholder="Classement">
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-center items-center mt-8">
+                            <label for="demande-spe">Une demande spécifique ?</label>
+                            <textarea name="demande-spe" id="demande-spe" form="form-project" cols="30" rows="3" placeholder="Faites-vous plaisir !" class="border-2 rounded-lg focus:ring-0 focus:outline-none invalid:border-red-700 valid:border-green-700 active:border-green-700 mx-12"></textarea>
+                        </div>
+
+                        <div class="flex justify-center items-center mt-8">
+                            <label for="rep-correcte" class="font-bold">Je valide l'envoie de mes réponses :</label>
+                            <input type="checkbox" name="rep-correcte" id="rep-correcte" class="invalid:border-red-700 valid:border-green-700 mx-12" required>
+                        </div>
+
+                    </div>
+				</div>
+				<!-- / Step Content -->
+			</div>
+		</div>
+
+		<!-- Bottom Navigation -->	
+		<div class="relative py-5 bg-white" x-show="step != 'complete'">
+			<div class="max-w-3xl mx-auto px-4">
+				<div class="flex justify-between">
+					<div class="w-1/2">
+						<button
+							x-show="step > 1"
+							@click="step--"
+							class="w-32 focus:outline-none py-2 px-5 rounded-lg shadow-sm text-center text-black bg-white transition duration-300 hover:text-white hover:bg-black hover:-translate-x-1 font-medium border" 
+						>Précédent</button>
+					</div>
+
+					<div class="w-1/2 text-right">
+						<button
+							x-show="step < 4"
+							@click="step++"
+							class="w-32 focus:outline-none border border-transparent py-2 px-5 rounded-lg shadow-sm text-center transition duration-300 text-white bg-black hover:bg-white hover:translate-x-1 hover:text-black hover:border-black font-medium" 
+						>Suivant</button>
+
+						<button
+							x-show="step === 4"
+							class="w-32 focus:outline-none border border-transparent py-2 px-5 rounded-lg shadow-sm text-center text-white bg-black transition duration-300 hover:scale-110 font-extrabold" type="submit" method="POST" 
+						>Fin</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- / Bottom Navigation https://placehold.co/300x300/e2e8f0/cccccc -->	
+	</div>
+
+	<script>
+		function app() {
+			return {
+                step : 1,
+			}
+		}
+	</script>
+</form>
+{% endblock %}

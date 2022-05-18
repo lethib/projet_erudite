@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body class="bg-white">
+    <header class="bg-black py-5">
+        <h1 class="text-white text-4xl text-center mb-8">PROJET ERUDITE</h1>
+        <nav class="flex items-center justify-around">
+            <a href="{{url_for('home')}}" id="accueil" class="grid grid-cols-1 justify-items-center gap-y-1">
+                <img src="/static/img/icons8-home.svg" alt="">
+                <span class="text-white">Accueil</span>
+            </a>
+            <a href="{{url_for('carnet_bord')}}" id="carnet-de-bord" class="grid grid-cols-1 justify-items-center gap-y-1">
+                <img src="/static/img/book-svgrepo-com.svg" alt="">
+                <span class="text-white">Carnet de Bord</span>
+            </a>
+            <a href="{{url_for('projet')}}" id="projet" class="grid grid-cols-1 justify-items-center gap-y-1">
+                <img src="/static/img/running-man-with-raised-arm-svgrepo-com.svg" alt="">
+                <span class="text-white">Projet</span>
+            </a>
+            <a href="{{url_for('plans')}}" id="plans" class="grid grid-cols-1 justify-items-center gap-y-1">
+                <img src="/static/img/pencil-svgrepo-com-2.svg" alt="">
+                <span class="text-white">Plans</span>
+            </a>
+            <a href="{{url_for('profil_client')}}" id="profil-client" class="grid grid-cols-1 justify-items-center gap-y-1">
+                <img src="/static/img/client-profile-svgrepo-com.svg" alt="">
+                <span class="text-white">Profil Client</span>
+            </a>
+        </nav>
+    </header>
+
+    {% block content %}
+    {% endblock %}
+</body>
+</html>
